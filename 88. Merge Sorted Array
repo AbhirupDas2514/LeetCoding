@@ -1,0 +1,28 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int n1=0;
+        int n2=0;
+        if(n==0)
+            return;
+        
+        while(n1<n+m){
+            if(n1>=m){
+                nums1[n1]=nums2[n2];
+                n1++;
+                n2++;
+                continue;
+            }
+            if(nums1[n1]<=nums2[0]){
+                n1++;
+            }
+            else{
+                int temp=nums2[0];
+                nums2[0]=nums1[n1];
+                nums1[n1]=temp;
+                n1++;
+                Arrays.sort(nums2);
+            }
+        }    
+            
+    }
+}
