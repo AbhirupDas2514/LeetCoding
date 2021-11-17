@@ -1,3 +1,17 @@
+class Solution(object):
+    def checkInclusion(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        memo={}
+        permutes=permutations(s1,memo)
+        for i in permutes:
+            if i in s2:
+                return True
+        return False    
+           
 def permutations(s1,memo):
     if s1 in memo:
         return memo[s1]
@@ -9,4 +23,4 @@ def permutations(s1,memo):
         for each in subpermutes:
             permutes.append(char+each)
     memo[s1]=permutes        
-    return memo[s1] 
+    return memo[s1]  
