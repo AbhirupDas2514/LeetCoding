@@ -1,0 +1,12 @@
+def permutations(s1,memo):
+    if s1 in memo:
+        return memo[s1]
+    if s1 == "": 
+        return [""]
+    permutes = []
+    for char in s1:
+        subpermutes = permutations(s1.replace(char, "", 1),memo)
+        for each in subpermutes:
+            permutes.append(char+each)
+    memo[s1]=permutes        
+    return memo[s1] 
