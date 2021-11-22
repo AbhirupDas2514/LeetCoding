@@ -1,0 +1,32 @@
+class Solution {
+    public boolean validPath(int n, int[][] edges, int start, int end) {
+        ArrayList<Integer>[] graph=new ArrayList[n];
+        for(int i=0;i<n;i++){
+            graph[i]=new ArrayList<Integer>();
+        }
+        for(int[] i:edges){
+            graph[i[0]].add(i[1]);
+            graph[i[1]].add(i[0]);
+                      
+        }                                
+        boolean[] visited=new boolean[n];
+        return hasPath(n,graph,start,end,visited);
+        
+    }
+    public static boolean hasPath(int n,ArrayList<Integer>[] graph, int curr, int end,boolean[] visited){
+        if(curr==end){
+            return true;
+        }
+        visited[curr]=true;
+        for(int i:graph[curr]){
+            if(visited[i]!=true){
+                if(hasPath(n,graph,i,end,visited)){
+                    return true;
+            }
+            }
+            
+        }
+        return false;
+        
+    }
+}
